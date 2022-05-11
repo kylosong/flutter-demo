@@ -1,8 +1,10 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'hello_word.dart';
 
 void main() {
   runApp(const MyApp());
+  // runApp(const HelloWord());
 }
 
 class MyApp extends StatelessWidget {
@@ -51,20 +53,19 @@ class MyApp extends StatelessWidget {
 //
 //      ),
 //    );
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Startup Name Generator',
-      theme:  new ThemeData(
-        primaryColor: Colors.white
-      ),
-      home: RandomWords(),
+      theme: new ThemeData(primaryColor: Colors.white),
+      // home: RandomWords(),
+      home: const HelloWord(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
+
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -75,11 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -214,12 +210,15 @@ class _RandomWordsState extends State<RandomWords> {
               style: _biggerFont,
             ),
           ));
-      final divided = ListTile.divideTiles(context: context, tiles: titles).toList();
+      final divided =
+          ListTile.divideTiles(context: context, tiles: titles).toList();
       return Scaffold(
         appBar: AppBar(
           title: const Text('Saved Suggestions'),
         ),
-        body: ListView(children: divided,),
+        body: ListView(
+          children: divided,
+        ),
       );
     }));
   }
